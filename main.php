@@ -17,8 +17,10 @@
     <!-- Bookmark Icon-->
     <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico" />
 
-    <!-- our stylesheet -->
+    <!-- our stylesheets -->
  		 <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+     <link rel="stylesheet" type="text/css" href="css/extra.css" />
 
     <!-- Attach the Reveal CSS -->
       <link rel="stylesheet" href="css/reveal.css">
@@ -32,11 +34,11 @@
 
     <!--J query librarys -->
  
-    <script src="javascript\jquery.js" type="text/javascript"></script>
+    <script src="javascript/jquery.js" type="text/javascript"></script>
 
-    <script src="javascript\jquery-ui.js" type="text/javascript"></script>
+    <script src="javascript/jquery-ui.js" type="text/javascript"></script>
 
-    <script src="javascript\tierjunk.js" type="text/javascript"></script>
+    <script src="javascript/tierjunk.js" type="text/javascript"></script>
     
     <!-- googles hosted jquery library -->
       
@@ -184,57 +186,93 @@
 
 <!-- modal reveal code -->
       <div id="myModal" class="reveal-modal">
-           <h1>A short message to Bob</h1>
-           <p>Readme readme readme readme</p>
-           <a class="close-reveal-modal">&#215;</a>
+
+
+
+           <h1>Welcome</h1>
+
+           <p>The concept of Teirlist is a little ambitious. We want a system to rank "everything" into top, middle, and lower tiers. The real goal is to stimulate interesting conversation between the obsessive nerds of the world. </p>
+
+           <p> 
+            This proved to be a longer project than the four weeks we have been provided with allowed. What we have here is the same concept but with an extremely limited scope. 
+            One set of entities and 5 different ways to rank them. All user rankings are stored to the database for recall and comparison later.
+          </p>
+
+          <p><a href="intro.html">Link to the Intro Page</a></p>
+
+          <a class="close-reveal-modal">&#215;</a>
       </div>
 
 <!--  Programmatic Launching Of Reveal -->
 
-<script type="text/javascript">
+ <script type="text/javascript">
     $(document).ready(function() {
 
 
-         $('#myButton').click(function(e) {
+         $('#myButton').trigger(function(e) {
               e.preventDefault();
         $('#myModal').reveal();
          });
 
 
     });
-</script>
+
+
+ /*fires the modal automaticly on page load, for bobs sake. */
+ /*  $(window).load(function() {
+      
+    $('#myButton').trigger("click");
+}); */
+
+</script> 
     
 
 <!--begining of the official HTML -->
     <div id="header">
-            <H1>GodTier</H1>
-          </div>
-
-
-            
+            <img src="images/TeirLogo.png" alt="logogoeshere">
+    </div>
 
     <div id="subheader">
-        <h3><a href="profile.php">Profile</a></h3>
-
+      <ul class="ulnav">
+          <li class="linav">
+            <h3><a href="main.php">Home</a></h3>
+          </li>
+          <li class="linav">
+            <h3><a href="about.html">About</a></h3>
+          </li>
+          <li class="linav">
+            <h3><a href="tierlist.php">Tierlist</a></h3>
+          </li>
+          <li class="linav">
+            <h3><a href="profile.php">Profile</a></h3>
+          </li>
+      </ul>
 
 
       </div>
 
        <div id="outerwrapper">
-
-          <div id="user">    
+        <!--Right Column -->
+          <div id="user">   
+             <p>Facebook Login Required</p> 
              <h2 id="test"></h2>
              <div class="fb-login-button" data-show-faces="false" data-width="400" data-max-rows="1"></div>
-             <p>Facebook Login Required</p>
-             <a href="#" data-reveal-id="myModal">Click Me For A Modal</a>
-             </div> <!-- user -->
+             <br />
+             <br />
+             <a href="#" data-reveal-id="myModal" id="myButton">Intro Page</a>
+             <h1 id="sidehead">Headlines</h1>
+             <ul id="stories">
+                <li class="story">Chiefs Deal With Suicide</li>
+                <li class="story">Giants Edged by Skins</li>
+                <li class="story">Eagles Nightmare Continues</li>
+                <li class="story">Fantasy Playoff Tips for Week 14</li>
+             </ul>
 
-  <div id="content-left">
 
+             <h1 id="started">Let's Get Started!</h1>
+             <?php
 
-          <div id="highlight">
-             <div class="inside">
-                 <?php
+              //Query and Print all of the tierlists in the database
 
                 $display = 'select TL_ID, TLName from tierlist;';
                 $results = mysql_query($display);
@@ -254,13 +292,24 @@
                   }
 
                   ?>
+             </div> <!-- user -->
+
+  <div id="content-left">
+
+
+          <div id="highlight">
+             <div class="inside">
+
+                  <h1 id="headline">This Weekend in Football</h1>
+                  <p><img src="images/main.gif"></p>
+                  <p id="more"><a href="#">Read More &gt;</a><p>
              </div>
              </div><!-- highlight -->
 
 
           <div id="search">
              <div class="inside">
-              <h4>Try searching something you like like "football" for example.</h4>
+              <h4>Try searching something you like; "NFL" is a great example</h4>
 
                <div style="float: left;"><input type="text" id="tipue_search_input"></div>
                <div style="float: left; margin-left: 13px;"><input type="button" id="tipue_search_button"></div>
@@ -271,43 +320,48 @@
 <div class="content">
   <ul id="root" class="menu">
       <li>
-          <a href='javascript:void(0);' childid = 'c_12' class='cat_close category'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+          <a href='javascript:void(0);' childid = 'c_12' class='product'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
           <a href='javascript:void(0);'>Hobbies</a>
         </li>
         <ul id='c_12'></ul>
         <li>
-          <a href='javascript:void(0);' childid = 'c_13' class='cat_close category'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+          <a href='javascript:void(0);' childid = 'c_13' class='product'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
           <a href='javascript:void(0);'>Places</a>
         </li>
-                  <ul id='c_13'>
-                    <li>
-                        <a href='javascript:void(0);' class='product'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                        <a href='javascript:void(0);'>Pittsburgh</a>
-                      </li>
-                  </ul>
         <li>
           <a href='javascript:void(0);' childid = 'c_8' class='cat_close category'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
             <a href='javascript:void(0);'>Sports</a>
         </li>
                     <ul id='c_8'>
-                      <li>
+                        <li>
                           <a href='javascript:void(0);' childid = 'c_11' class='cat_close category'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                            <a href='javascript:void(0);'>Football</a>
+                            <a href='#'>Football</a>
                         </li>
-                      <ul id='c_11'></ul>
-                        <li>
-                            <a href='javascript:void(0);' childid = 'c_10' class='cat_close category'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                            <a href='javascript:void(0);'>Baseball</a>
-                        </li>
-                        <ul id='c_10'></ul>
-                        <li>
-                            <a href='javascript:void(0);' childid = 'c_9' class='cat_close category'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                            <a href='javascript:void(0);'>Badminton</a>
-                        </li>
-                        <ul id='c_9'></ul>
+                        <ul id='c_11'>
+                              <li>
+                                  <a href='javascript:void(0);' class='product'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                  <a href='rank.php?TL_ID=1'>Best NFL Teams 2012</a>
+                              </li>
+                              <li>
+                                  <a href='javascript:void(0);' class='product'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                  <a href='rank.php?TL_ID=2'>Best NFL Uniforms</a>
+                              </li>
+                               <li>
+                                  <a href='javascript:void(0);' class='product'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                  <a href='rank.php?TL_ID=3'>Best NFL Logos</a>
+                              </li>
+                               <li>
+                                  <a href='javascript:void(0);' class='product'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                  <a href='rank.php?TL_ID=4'>Best NFL Owners</a>
+                              </li>
+                               <li>
+                                  <a href='javascript:void(0);' class='product'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                  <a href='rank.php?TL_ID=5'>Best NFL Stadiums</a>
+                              </li>
+                        </ul>
                     </ul>
         <li>
-            <a href='javascript:void(0);' childid = 'c_5' class='cat_close category'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a href='javascript:void(0);' childid = 'c_5' class='product'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
             <a href='javascript:void(0);'>People</a>
         </li>
         <ul id='c_5'>
@@ -326,21 +380,10 @@
                               </li>
                         </ul>
                  </ul>
-        <li>
-            <a href='javascript:void(0);' childid = 'c_3' class='cat_close category'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            <a href='javascript:void(0);'></a>
-        </li>
+   
       
     </ul>
-</div>
-
-
-
-</div> <!-- sitemap -->
-
-
-
-
+            </div>
 
 
              </div> <!--search -->

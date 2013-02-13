@@ -1,5 +1,5 @@
 <?php
-
+//THIS CODE CONNECTS TO THE DATABASE JUST MAKE IT EASIER TO MOVE THIS HERE INSTEAD OF CALLING IT EVERYTIME IN EVERY DOCUMENT
   $link = mysql_connect($host, $username, $password);
   if (!$link) 
   {

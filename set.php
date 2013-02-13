@@ -1,10 +1,14 @@
 <?php
 
+	session_start();
+
 	include 'dbconnect.php';
 	include 'queryhelp.php';
 	include 'link.php';
 
 	$UName = $_SESSION['UName'];
+
+	//Takes Strings from rank and the TierList ID
 
 	$Top = $_POST['Top'];
 	$High = $_POST['High'];
@@ -12,8 +16,15 @@
 	$Shit = $_POST['Shit'];
 	$TL_ID = $_POST['TL_ID'];
 
+	$Verify = $Top.$High.$Low.$Shit;
+
 	$check = 0;
 
+	//Make some Arrays from the Strings above
+	//Input a string
+	//Look for token of , and parse it out
+	//Insert each thing into an array
+	//return the array
 	function arrayTime($str)
 	{
 		$array = array();
@@ -28,12 +39,38 @@
 		return $array;
 	}
 
+	//Call the Function
 	$ArrTop = arrayTime($Top);
 	$ArrHigh = arrayTime($High);
 	$ArrLow = arrayTime($Low);
 	$ArrShit = arrayTime($Shit);
 
-	//echo "<p>$TL_ID</p>";
+	$ArrVerify = arrayTime($Verify);
+
+	$Test1 = array();
+
+	$Test2 = count($ArrVerify);
+
+	foreach ($ArrVerify as $key => $value) {
+		
+		for ($i=0; $i < $key; $i++) { 
+
+			if ($Test1[$i] == $value) {
+				die("<p>You Placed The Same Item Twice!</p>");
+			}
+
+		}
+
+		$Test1[$key] = $value;
+		echo '<br />';
+	}
+
+	if ($Test2 < 32) {
+		die("<p>Please place all the teams!</p>");
+	}
+
+
+	//Check and see if the user already submitted a list, if not add one
 
 	$U_ID = nametoNumber();
 
@@ -70,12 +107,17 @@
 
 	}
 
-	$UL_ID = listtoNumber();
+	$UL_ID = listtoNumber($TL_ID);
 
+
+	//IF A USER LIST WAS FOUND!! UPDATING HERE KIDS!!!
+	//RUN THROUGH EACH ARRAY AND ASSIGN THE RIGHT VALUE TO USCORE IN THE USERRANKING TABLE!!!
 	if ($check==1) 
 	{
 		foreach ($ArrTop as $key => $value) {
 			//echo "$value";
+
+			//QUERY AND CHECK IF THE QUERY WORKED!
 
 			$I_ID = $value;
 			$update = "update userrankings set UScore = 5 where I_ID = $I_ID and UL_ID = $UL_ID;";
@@ -92,7 +134,7 @@
 					//echo "<script type='text/javascript'>console.log('Insert for ".$I_ID." complete');</script>";
 				}
 		}
-
+		//ONE FOR EACH OF THE FOUR TIERS!!!
 		foreach ($ArrHigh as $key => $value) {
 			//echo "$value";
 
@@ -151,7 +193,8 @@
 		}
 	}
 
-
+	//IF YOU DIDN'T MAKE A LIST BEFORE!!!
+	//SAME AS ABOVE!!!
 	else
 	{
 		foreach ($ArrTop as $key => $value) {
@@ -232,12 +275,13 @@
 		}	
 	}
 
-
-	$totalorder = "select userlist.TL_ID, userrankings.I_ID, userrankings.UScore from userrankings, userlist where userlist.UL_ID = userrankings.UL_ID";
+	//Time to update the RANKING page!!
+	$totalorder = "select userlist.TL_ID, userrankings.I_ID, userrankings.UScore from userrankings, userlist where userlist.UL_ID = userrankings.UL_ID and userlist.TL_ID =$TL_ID";
 	$totalquery = mysql_query($totalorder);
 	$totalarray = array();
 	$count = 0;
 
+	//Check if the query worked
 	if(!$totalquery)
 	{
 	    $message='Invalid Query ' .mysql_errno()."\n";
@@ -245,7 +289,7 @@
 	    die($message);
 	}
 
-
+	//While the query still has some rows, make an array with all of the scores from all lists and then add up for each item in the set 
 	while($row = mysql_fetch_array($totalquery))
 	{
 		$score = $row['UScore'];
@@ -261,7 +305,7 @@
 		echo "<p>".$key." ".$value."</p>";
 	}*/
 
-	
+	//For all items updat the TSCORE from the array created above
 	foreach ($totalarray as $key => $value) 
 	{
 		$help = $key + 1;
@@ -277,6 +321,6 @@
 	
 
 echo "<p>Success!</p>";
-echo "<p><a href='tierlist.php?TL_ID=1S';
+echo "<p><a href='show.php?TL_ID=$TL_ID'>Check the Master</a></p>";
 
 ?>

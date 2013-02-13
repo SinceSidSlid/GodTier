@@ -1,7 +1,10 @@
 <?php
 
-	
+	session_start();
 
+	//Input Nothing
+	//Using the UName query the database and get the U_ID
+	//Return the User ID
 	function nametoNumber()
 	{
 		$varUname=$_SESSION['UName'];
@@ -10,7 +13,7 @@
 
 		if(!$back)
 		{
-			$message='Invalid Query ' .mysql_error()."\n";
+			$message='Invalid Query ' .mysql_errno()."\n";
 			$message .= 'Whole Query ' . $back;
 			die($message);
 		}
@@ -19,7 +22,11 @@
 		return $return['U_ID'];
 	}
 
-	function listtoNumber()
+	//Input the current tierlist
+	//Using UName and TL_ID query for the UL_ID
+	//Two Step Querying!
+	//Return the UL_ID given the U_ID and TL_ID
+	function listtoNumber($TL_ID)
 	{
 		$varUname=$_SESSION['UName'];
 		$test = "select U_ID from user where UName = '$varUname';";
@@ -27,7 +34,7 @@
 
 		if(!$back)
 		{
-			$message='Invalid Query ' .mysql_error()."\n";
+			$message='Invalid Query ' .mysql_errno()."\n";
 			$message .= 'Whole Query ' . $back;
 			die($message);
 		}
@@ -39,7 +46,7 @@
 
 		if(!$back2)
 		{
-			$message2 ='Invalid Query ' .mysql_error()."\n";
+			$message2 ='Invalid Query ' .mysql_errno()."\n";
 			$message2 .= 'Whole Query ' . $back2;
 			die($message2);
 		}

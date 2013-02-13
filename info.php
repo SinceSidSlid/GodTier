@@ -1,7 +1,12 @@
 <?php
+	
+	session_start();
 
 	include 'queryhelp.php';
 
+	//Input User Name
+	//Queries the database for number of lists by a user
+	//Returns the number of lists
 	function numLists($UName)
 	{
 		$U_ID = nametoNumber();
@@ -23,6 +28,9 @@
 
 	}
 
+	//Input User Name
+	//Queries the database for the number of comments by a user
+	//Returns the Number of Comments
 	function numComments($UName)
 	{
 		$U_ID = nametoNumber();

@@ -1,6 +1,6 @@
 <?php
 	
-	
+	session_start();
 
 	include 'dbconnect.php';
 	include 'queryhelp.php';
@@ -28,6 +28,12 @@ $U_ID = intval(nametoNumber());
 $Text = $_POST['text'];
 $TL_ID = $_POST['tierlist'];
 
+//TEST THE USER DATA FOR ELSE
+$Text = filter_var($Text, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+$Text = mysql_real_escape_string($Text);
+
+
+//THEN INSERT THE COMMENT
 $query = "insert into comment (U_ID, TL_ID, Text) values ($U_ID, $TL_ID, '$Text');";
 
 		$result = mysql_query($query);
@@ -45,7 +51,7 @@ $query = "insert into comment (U_ID, TL_ID, Text) values ($U_ID, $TL_ID, '$Text'
 		}
 	
 
-
+//I RAN OUT OF TIME TO JQUERY THIS PART, SO IT FEELS ROUGH
 
 ?>
 

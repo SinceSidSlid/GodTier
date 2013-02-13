@@ -1,6 +1,7 @@
 <?php
 	
-
+	session_start();
+	
 	include 'dbconnect.php';
 	include 'link.php';
 
@@ -23,7 +24,7 @@
 	//If it is echo back the name
 	if($c == 1)
 	{
-		echo "Thanks for coming back, $FName";
+		echo "Welcome, $FName";
 
 	}
 	//If not enter the user into the database, then echo back a welcome statement
@@ -40,7 +41,7 @@
 			die($message);
 		}
 
-		echo "Thanks for Joining Us $FName";
+		echo "Welcome, $FName";
 
 	}
 

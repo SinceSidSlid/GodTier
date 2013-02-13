@@ -3,6 +3,7 @@
 
   include 'dbconnect.php';
   include 'link.php';
+  include 'info.php';
 
   $TL_ID = $_GET['TL_ID'];
 
@@ -17,16 +18,16 @@
  	  
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <script src="javascript\jquery.js" type="text/javascript"></script>
+    <script src="javascript/jquery.js" type="text/javascript"></script>
 
-    <script src="javascript\jquery-ui.js" type="text/javascript"></script>
+    <script src="javascript/jquery-ui.js" type="text/javascript"></script>
 
-    <script src="javascript\tierjunk.js" type="text/javascript"></script>
+    <script src="javascript/tierjunk.js" type="text/javascript"></script>
 
-    <script src="javascript\jquery.overscroll.js" type="text/javascript"></script>
+    <script src="javascript/jquery.overscroll.js" type="text/javascript"></script>
 
       <script type="text/javascript">
-
+        //When the page finishes loading
          $(document).ready(function() {
 
                 $("#fun").hide();
@@ -36,7 +37,7 @@
 
                 });
 
-
+                  //Make elements of the class "item" draggable
                  $(".item").draggable( {
                             containment: 'window',
                             cursor: 'move',
@@ -47,7 +48,7 @@
                     });    
 
                 
-
+                 //Elements with the class "slot" can have draggables dropped in
                 $(".slot").droppable({
                         accept:".item",
                         tolerance:"touch",
@@ -101,6 +102,7 @@
                     //var top = $(".top").html();
                     //$("#testing").html(top);
 
+                    //Run through the tables and add stuff to the arrays
                     $('#top>tbody>tr>td').each( function(){
                          //add item to array
                          top.push( $(this).text() );       
@@ -121,6 +123,7 @@
                          shit.push( $(this).text() );       
                       });
 
+                    //Run through arrays and make strings
                     $.each(top, function(index, val) {
                         console.log(val);
                         StrTop += val;
@@ -141,18 +144,18 @@
                         console.log(val);
                         });
 
-
+                    //Send all that stuff to set.php
                     ajaxRequest.open('POST','set.php?', true);
                     ajaxRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                     ajaxRequest.send('Top=' + StrTop + '&High=' + StrHigh + '&Low=' + StrLow + '&Shit=' + StrShit + '&TL_ID=' + TL_ID);
 
-
+                    //When the ajax is ready, put the return into the div with the id of funny
                     ajaxRequest.onreadystatechange=function()
                     {
                         if (ajaxRequest.readyState==4 && ajaxRequest.status==200)
                         {
                           console.log('Back');
-                          document.getElementById("fun").innerHTML=ajaxRequest.responseText;
+                          document.getElementById("funny").innerHTML=ajaxRequest.responseText;
                         }
                     }
 
@@ -170,6 +173,7 @@
  <div id="header">
 
             <?php
+            //Put the Tierlist Name as the Header
               $query = "select TLName from tierlist where TL_ID = $TL_ID;";
               $result = mysql_query($query);
               
@@ -191,7 +195,20 @@
 
 
   <div id="subheader">
-          <h3><a href="main.php?">Main</a></h3>
+          <ul class="ulnav">
+          <li class="linav">
+            <h3><a href="main.php">Home</a></h3>
+          </li>
+          <li class="linav">
+            <h3><a href="about.html">About</a></h3>
+          </li>
+          <li class="linav">
+            <h3><a href="tierlist.php">Tierlist</a></h3>
+          </li>
+          <li class="linav">
+            <h3><a href="profile.php">Profile</a></h3>
+          </li>
+      </ul>
     </div>
 
   <div id="outerwrapper">
@@ -354,6 +371,10 @@
  
         <button class="button">Confirm Your Selection</button>
 
+        <div id="funny"></div>
+
+        
+
 
   </div><!-- end rank -->
 
@@ -365,7 +386,7 @@
           <form name="comment" action="comment.php" method="post" enctype="multipart/form-data">
             <table>
               <tr>
-                <td><textarea name="text" rows="4" cols="50"></textarea></td>
+                <td><textarea name="text" rows="4" cols="43"></textarea></td>
               </tr>
               <tr>
                 <td colspan='2'><p><input type="submit" name="Submite" value="Submit" /></p></td>
@@ -373,11 +394,9 @@
             </table>
             <input type='hidden' name='tierlist' value='<?=$TL_ID?>' />
           </form>
-      </div><!-- end comment-->
 
-      <div id="bumper">
-           <?php
-
+                  <?php
+                  //Print the Comments, Query then print out a row of a table at a time
               $display = "select C_ID, Text from comment where TL_ID = $TL_ID;";
               $results = mysql_query($display);
 
@@ -404,13 +423,9 @@
               print'</table>';
 
 ?>
+      </div><!-- end comment-->
 
-      </div>
-
-
-
-    
-
+      
   </div><!-- end outerwrapper -->
 
 
@@ -418,7 +433,7 @@
      
 
 
-<div id="fun"></div>
+
   
  </div>
 

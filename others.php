@@ -6,11 +6,12 @@
   include 'link.php';
   include 'info.php';
 
-  //Variables
+  $TL_ID = $_GET['TL_ID'];
   $UName = $_SESSION['UName'];
   $LName = $_SESSION['LName'];
   $FName = $_SESSION['FName'];
   $U_ID = nametoNumber();
+
   $varComm = numComments($UName);
   $varList = numLists($UName);
 
@@ -57,12 +58,11 @@
 </head>
 <body>
 <div id="header">
-            <h1>Profile Page</h1>
 
-    
+  <h1>Profile Page</h1>
 </div>
 <div id="subheader">
-<ul class="ulnav">
+  <ul class="ulnav">
           <li class="linav">
             <h3><a href="main.php">Home</a></h3>
           </li>
@@ -82,63 +82,34 @@
 
 		<div id="profile">
              <div class="inside">
-
-
-             	<table>
-           			
-           			<tr>
-                    <td><h2>Username</h2></td><td><h2 class='cent'><?=$UName?></h2></td>
-                </tr>
-
-               	<tr>
-                    <td><h4>Full Name</h4></td><td><h4 class='cent'><?=$FName?> <?=$LName?></h4></td>
-                </tr>
-
-                <tr>
-                    <td><h4>Number of Lists</h4></td>
-                    <td><h4 class='cent'><?=$varList?></h4></td>
-                </tr>  
-               	
-                <tr>
-                    <td><h4>Number of Comments</h4></td>
-                    <td><h4 class='cent'><?=$varComm?></h4></td>
-                </tr>
-               	
-               	</table>
-
-                <h2>Lists You've Completed</h2>
-
-                <ul class="biggerer">
-
-
+                <table>
                 <?php
 
-                    //Query the database and print the lists that a user has completed
-                    $display = "select userlist.TL_ID, tierlist.TLName from userlist, tierlist where userlist.TL_ID = tierlist.TL_ID and userlist.U_ID = '$U_ID';";
-                    $results = mysql_query($display);
+                //Query the database for user who have completed the tier and link to the page where people can view those lists
+                $display = "select user.Fname, user.Lname, user.U_ID from user, userlist where user.U_ID = userlist.U_ID and userlist.TL_ID = $TL_ID ";
+                $results = mysql_query($display);
 
-                    if(!$results){
-                        $message='Invalid Query ' .mysql_errno()."\n";
-                        $message .= 'Whole Query ' . $display;
-                        die($message);
-                    }
+                if(!$results)
+                {
+                    $message='Invalid Query ' .mysql_errno()."\n";
+                    $message .= 'Whole Query ' . $display;
+                    die($message);
+                }
 
-                    $count = 1;
+                $count = 1;
 
-                    while($row = mysql_fetch_array($results))
-                    {
-                      print"<li><a href='rank.php?TL_ID=$row[TL_ID]'>".$row['TLName']."</a></li>";
-                      $count++;
-                    }
+                while($row = mysql_fetch_array($results))
+                {
+                  print"<tr><td width='200px'><p>".$row['Fname']."</p></td><td width='200px'><p>".$row['Lname']."</p></td><td width='200px'><p><a href='othershow.php?U_ID=$row[U_ID]&TL_ID=$TL_ID'>View</a></p></td>";
+                  $count++;
+                }
 
-                ?>
-              </ul>
+
+              ?>
+             </table>
+
              </div>
         </div><!-- highlight -->
-
-
-
-
 
 </div><!-- outerwrapper -->
 
@@ -148,7 +119,7 @@
                     'mode': 'live'
                });
           });
-      </script>
+</script>
+
 </body>
 </html>
-
