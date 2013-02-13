@@ -1,0 +1,406 @@
+/*style.scss*/
+/********************************
+
+variables
+
+*********************************/
+/*************************************
+
+
+mixins
+
+
+**************************************/
+/****************************************
+
+This is content generalized to all pages
+
+*****************************************/
+/* line 86, ../sass/style.scss */
+body {
+  background: #45484d;
+  background-image: url("../images/frontbackground.png");
+  background-size: auto;
+}
+/* line 99, ../sass/style.scss */
+body h1, body h2, body h3 {
+  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+}
+/* line 102, ../sass/style.scss */
+body h3 {
+  color: #4DA2B8;
+  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+}
+/* line 108, ../sass/style.scss */
+body h4, body h5, body h6 {
+  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+}
+/* line 113, ../sass/style.scss */
+body p, body li {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+}
+
+/* line 123, ../sass/style.scss */
+#outerwrapper {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  background-color: snow;
+  top: -30px;
+}
+
+/* line 132, ../sass/style.scss */
+#header {
+  width: 100%;
+  position: relative;
+  height: 50px;
+  margin: 0px;
+  padding: 0px;
+  background: #eeeeee;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #eeeeee 26%, #cccccc 64%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(26%, #eeeeee), color-stop(64%, #cccccc));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #eeeeee 26%, #cccccc 64%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #eeeeee 26%, #cccccc 64%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #eeeeee 26%, #cccccc 64%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #eeeeee 26%, #cccccc 64%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );
+  /* IE6-9 */
+  top: -21px;
+  right: 10px;
+  padding-left: 100px;
+}
+
+/* line 140, ../sass/style.scss */
+#subheader {
+  width: 100%;
+  position: relative;
+  height: 50px;
+  margin: 0px;
+  padding: 0px;
+  background: #eeeeee;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #eeeeee 26%, #cccccc 64%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(26%, #eeeeee), color-stop(64%, #cccccc));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #eeeeee 26%, #cccccc 64%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #eeeeee 26%, #cccccc 64%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #eeeeee 26%, #cccccc 64%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #eeeeee 26%, #cccccc 64%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );
+  /* IE6-9 */
+  top: -35px;
+  padding-left: 100px;
+  right: 10px;
+}
+
+/* line 152, ../sass/style.scss */
+#tipuesearch {
+  position: relative;
+  float: right;
+  width: 300px;
+  top: -35px;
+  right: 100px;
+}
+
+/* line 162, ../sass/style.scss */
+#nav {
+  position: relative;
+  top: -60px;
+  right: 200px;
+  float: right;
+  z-index: 1;
+}
+
+/*******************************
+
+this is content from the main home page.
+
+*******************************/
+/* line 178, ../sass/style.scss */
+#user {
+  position: relative;
+  background-color: #fffafa;
+  float: right;
+  width: 255px;
+  height: 995px;
+  padding: 10px;
+  border-left: 1px solid #666666;
+}
+
+/* line 193, ../sass/style.scss */
+#highlight {
+  position: relative;
+  float: left;
+  width: 720px;
+  height: 500px;
+}
+
+/* line 205, ../sass/style.scss */
+#search {
+  position: relative;
+  float: left;
+  width: 720px;
+  height: 500px;
+}
+
+/* line 216, ../sass/style.scss */
+.inside {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background-color: snow;
+  width: 95%;
+  height: 95%;
+  padding: 20px;
+}
+
+/********************  rank page specific items bellow this line
+
+******************************************************************/
+/* line 231, ../sass/style.scss */
+#itemset {
+  float: left;
+  background-color: snow;
+  width: 400px;
+  padding: 20px;
+  margin: 20px;
+}
+/* line 239, ../sass/style.scss */
+#itemset table {
+  position: relative;
+  left: -10px;
+}
+
+/* line 245, ../sass/style.scss */
+#rank {
+  position: relative;
+  float: right;
+  width: 400px;
+  z-index: -1;
+  background-color: snow;
+  padding: 20px;
+  margin: 20px;
+}
+/* line 255, ../sass/style.scss */
+#rank table {
+  position: relative;
+  left: -10px;
+}
+
+/* line 260, ../sass/style.scss */
+#comment {
+  background-color: snow;
+  float: left;
+  width: 400px;
+  padding: 20px;
+  margin: 20px;
+}
+/* line 267, ../sass/style.scss */
+#comment table {
+  position: relative;
+  left: -10px;
+  left: -15px;
+}
+
+/* line 273, ../sass/style.scss */
+#bumper {
+  background-color: snow;
+  float: left;
+  width: 400px;
+  padding: 20px;
+  margin: 20px;
+}
+
+/* line 283, ../sass/style.scss */
+#top {
+  position: relative;
+  width: 400px;
+}
+
+/* line 289, ../sass/style.scss */
+#high {
+  position: relative;
+  width: 400px;
+}
+
+/* line 295, ../sass/style.scss */
+#low {
+  position: relative;
+  width: 400px;
+}
+
+/* line 301, ../sass/style.scss */
+#shit {
+  position: relative;
+  width: 400px;
+}
+
+/* line 309, ../sass/style.scss */
+.item {
+  width: 78px;
+  height: 78px;
+  border: 3px solid #ffffff;
+  left: -3px;
+  top: -3px;
+  border-radius: 1px;
+}
+
+/* line 319, ../sass/style.scss */
+.socket {
+  width: 72px;
+  height: 72px;
+  border-style: dashed;
+  border-width: 3px;
+  border-color: #908c7c;
+  margin: 10px;
+}
+/* line 326, ../sass/style.scss */
+.socket img {
+  width: auto;
+  max-width: 78px;
+  height: auto;
+  max-height: 78px;
+}
+
+/* line 333, ../sass/style.scss */
+.slot {
+  width: 72px;
+  height: 72px;
+  float: left;
+  border-style: dashed;
+  border-width: 3px;
+  border-color: #908c7c;
+  margin: 10px;
+}
+/* line 341, ../sass/style.scss */
+.slot img {
+  width: 78px;
+}
+
+/******************************************
+
+This section is for things specific to the profile page
+
+*********************************************/
+/* line 352, ../sass/style.scss */
+#profile {
+  padding: 100px;
+}
+/* line 353, ../sass/style.scss */
+#profile h2 {
+  font-size: 300%;
+}
+/* line 357, ../sass/style.scss */
+#profile h3, #profile h4, #profile h5, #profile h6 {
+  font-size: 200%;
+}
+/* line 359, ../sass/style.scss */
+#profile p {
+  font-size: 150%;
+}
+
+/************************************************** 
+
+This section pertains to the sitemap on the front page
+
+***********************************************/
+/* line 376, ../sass/style.scss */
+.content {
+  background: #333333;
+  width: 300px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* line 383, ../sass/style.scss */
+a:link, a:visited {
+  color: #027AC6;
+  text-decoration: none;
+}
+
+/* line 388, ../sass/style.scss */
+a:hover {
+  color: #0062A0;
+  text-decoration: underline;
+}
+
+/* line 393, ../sass/style.scss */
+a:active, a.active {
+  color: #5895be;
+}
+
+/* line 397, ../sass/style.scss */
+ul.menu, .item-list ul {
+  margin: 0.35em 0 0 -0.5em;
+  /* LTR */
+  padding: 0;
+}
+
+/* line 401, ../sass/style.scss */
+ul.menu ul, .item-list ul ul {
+  margin-left: 0em;
+  /* LTR */
+}
+
+/* line 405, ../sass/style.scss */
+ol li, ul li, ul.menu li, .item-list ul li, li.leaf {
+  margin: 0.15em 0 0.15em .5em;
+  /* LTR */
+}
+
+/* line 409, ../sass/style.scss */
+ul li, ul.menu li, .item-list ul li, li.leaf {
+  padding: 0 0 .2em 1.5em;
+  list-style-type: none;
+  list-style-image: none;
+  background: transparent url(../images/menu-leaf.gif) no-repeat 1px 0.35em;
+  /* LTR */
+}
+
+/* line 415, ../sass/style.scss */
+.cat_close {
+  background-image: url(../images/menu-collapsed.gif);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+/* line 420, ../sass/style.scss */
+.cat_open {
+  background-image: url(../images/menu-expanded.gif);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+/* line 425, ../sass/style.scss */
+.product {
+  background-image: url(../images/menu-leaf.gif);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+/* line 430, ../sass/style.scss */
+a.product, a.cat_close, a.cat_open {
+  text-decoration: none;
+}
+
+/* line 433, ../sass/style.scss */
+#block-category-0 ul li, ul.menu li, .item-list ul li, li.leaf {
+  padding: 0 0 .2em .5em;
+  list-style-type: none;
+  list-style-image: none;
+  background: transparent no-repeat 1px .35em;
+  /* LTR */
+}
