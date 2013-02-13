@@ -26,4 +26,15 @@ Include the following variable listing the pages on your site if you're using Li
 */
 
 
-var tipuesearch_pages = ["http://www.sis.pitt.edu/~ug37/1059/FP/main.php","http://www.sis.pitt.edu/~ug37/1059/FP/rank.php", "http://www.sis.pitt.edu/~ug37/1059/FP/images" ];
+var tipuesearch_pages = ["http://www.sis.pitt.edu/~ug37/1059/FP/main.php", 
+"http://www.sis.pitt.edu/~ug37/1059/FP/rank.php/?TL_ID=1",
+"http://www.sis.pitt.edu/~ug37/1059/FP/rank.php/?TL_ID=2",
+"http://www.sis.pitt.edu/~ug37/1059/FP/rank.php/?TL_ID=3",
+"http://www.sis.pitt.edu/~ug37/1059/FP/rank.php/?TL_ID=4",
+"http://www.sis.pitt.edu/~ug37/1059/FP/rank.php/?TL_ID=5", 
+"http://www.sis.pitt.edu/~ug37/1059/FP/tierlist.php/?TL_ID=1",
+"http://www.sis.pitt.edu/~ug37/1059/FP/tierlist.php/?TL_ID=2",
+"http://www.sis.pitt.edu/~ug37/1059/FP/tierlist.php/?TL_ID=3",
+"http://www.sis.pitt.edu/~ug37/1059/FP/tierlist.php/?TL_ID=4",
+"http://www.sis.pitt.edu/~ug37/1059/FP/tierlist.php/?TL_ID=5",
+"http://www.sis.pitt.edu/~ug37/1059/FP/images" ];

@@ -1,0 +1,60 @@
+#more
+{
+	text-align: right;
+}
+
+#headline
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	/*font-family: Arial;*/
+}
+
+#started
+{
+	margin-top: 78px;
+	font-size: 211%;
+}
+
+#help
+{
+	background:url("../images/repeat.jpg") repeat-y;
+	width: 1000px;
+	overflow: auto;
+}
+
+#ls
+{
+	width: 652px;
+	float: left;
+	padding: 23px;
+}
+
+#rs
+{
+	width: 272px;
+	float: left;
+}
+
+.cont
+{
+	float: left;
+	padding: 15px;
+}
+
+.story
+{
+	text-decoration: none;
+	list-style: none;
+}
+
+#stories
+{
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+#sidehead
+{
+	margin-top: 43px;
+}
